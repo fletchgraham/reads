@@ -19,9 +19,14 @@ for row in reading_list:
     for i in range(multiplier):
         pool.append(title)
 
-selection = random.choice(pool)
+def select_random():
+    selection = random.choice(pool)
+    if random.random() < .05 : # 1 / 20 chance of rereading something
+        selection = random.choice(already_read)
+    return selection
 
-if random.random() < .05 : # 1 / 20 chance of rereading something
-    selection = random.choice(already_read)
+choices = [select_random() for x in range(3)]
 
-print(selection)
+print('CHOICES:')
+for ch in choices:
+    print(ch)
